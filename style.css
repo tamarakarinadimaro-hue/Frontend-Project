@@ -1,50 +1,207 @@
 body {
   font-family: Arial, sans-serif;
-  background: #f5f5f5;
+  background: linear-gradient(135deg, #0a0033, #1a0066, #330099);
   display: flex;
   justify-content: center;
   padding: 20px;
+  margin: 0;
 }
 
+/* Card */
 .card {
-  width: 100%;
-  max-width: 480px;
-  background: white;
-  padding: 20px;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+width: 100%;
+max-width: 480px;
+background: #ffffff;
+padding: 20px;
+border-radius: 16px;
+box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+display: flex;
+flex-direction: column;
+gap: 12px;
 }
 
+/* Title */
+h2 {
+margin: 0;
+font-size: 1.4rem;
+}
+
+/* Description */
+p {
+margin: 0;
+color: #555;
+}
+
+/* Priority badge */
+[data-testid="test-todo-priority"] {
+display: inline-block;
+padding: 4px 10px;
+border-radius: 20px;
+font-size: 0.8rem;
+font-weight: bold;
+background: #ffe5e5;
+color: #d00000;
+width: fit-content;
+}
+
+/* Status badge */
+[data-testid="test-todo-status"] {
+display: inline-block;
+padding: 4px 10px;
+border-radius: 20px;
+font-size: 0.8rem;
+font-weight: bold;
+background: #e6f0ff;
+color: #0033cc;
+width: fit-content;
+}
+
+/* Time + date */
+time {
+font-size: 0.9rem;
+color: #333;
+}
+
+/* Tags */
 ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding: 0;
-  list-style: none;
+display: flex;
+flex-wrap: wrap;
+gap: 8px;
+padding: 0;
+margin: 0;
+list-style: none;
 }
 
 li {
-  background: #eee;
-  padding: 5px 10px;
-  border-radius: 20px;
+background: #f0f0f0;
+padding: 6px 12px;
+border-radius: 20px;
+font-size: 0.8rem;
 }
 
+/* Buttons */
 button {
-  padding: 8px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
+padding: 10px;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+font-weight: bold;
+transition: 0.2s ease;
 }
 
+/* Edit button */
+[data-testid="test-todo-edit-button"] {
+background: #4caf50;
+color: white;
+}
+
+[data-testid="test-todo-edit-button"]:hover {
+background: #43a047;
+}
+
+/* Delete button */
+[data-testid="test-todo-delete-button"] {
+background: #e53935;
+color: white;
+}
+
+[data-testid="test-todo-delete-button"]:hover {
+background: #c62828;
+}
+
+/* Focus states (ACCESSIBILITY) */
 button:focus,
 input:focus {
-  outline: 2px solid purple;
+outline: 2px solid purple;
+outline-offset: 2px;
 }
 
+/* Completed state */
 .completed {
-  text-decoration: line-through;
-  opacity: 0.6;
+text-decoration: line-through;
+opacity: 0.6;
+}
+
+/* Checkbox spacing */
+input[type="checkbox"] {
+margin-bottom: 5px;
+}
+
+/* Responsive spacing tweak */
+@media (min-width: 768px) {
+.card {
+padding: 24px;
+}
+}
+
+
+
+/* BUBBLE CONTAINER */
+.bubbles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+/* INDIVIDUAL BUBBLES */
+.bubbles span {
+  position: absolute;
+  bottom: -100px;
+  width: 40px;
+  height: 40px;
+  background: rgb(200, 180, 255); /* lavender vibe 👀 */
+  border-radius: 50%;
+  animation: rise 12s infinite ease-in;
+}
+
+/* RANDOM POSITIONS */
+.bubbles span:nth-child(1) {
+  left: 10%;
+  width: 30px;
+  height: 30px;
+  animation-duration: 10s;
+}
+.bubbles span:nth-child(2) {
+  left: 25%;
+  animation-duration: 14s;
+}
+.bubbles span:nth-child(3) {
+  left: 40%;
+  width: 20px;
+  height: 20px;
+  animation-duration: 8s;
+}
+.bubbles span:nth-child(4) {
+  left: 60%;
+  animation-duration: 16s;
+}
+.bubbles span:nth-child(5) {
+  left: 75%;
+  width: 25px;
+  height: 25px;
+  animation-duration: 11s;
+}
+.bubbles span:nth-child(6) {
+  left: 90%;
+  animation-duration: 13s;
+}
+
+/* ANIMATION */
+@keyframes rise {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-110vh) scale(1.2);
+    opacity: 0;
+  }
+}
+
+.bubbles span {
+  backdrop-filter: blur(4px);
 }
