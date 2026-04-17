@@ -205,3 +205,48 @@ padding: 24px;
 .bubbles span {
   backdrop-filter: blur(4px);
 }
+
+
+
+
+    /* =========================
+       DELETE FADE ANIMATION
+    ========================= */
+    .fade-out {
+      opacity: 0;
+      transform: scale(0.95);
+      transition: all 0.4s ease;
+    }
+
+    .fade-in {
+      opacity: 1;
+      transform: scale(1);
+      transition: all 0.3s ease;
+    }
+
+    /* Undo toast */
+    .undo-toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #222;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 14px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .undo-toast button {
+      background: #4caf50;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 6px;
+      color: white;
+      cursor: pointer;
+    }
+  
